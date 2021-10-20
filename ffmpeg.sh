@@ -15,6 +15,8 @@ _ffmpeg()
             COMPREPLY=( $(compgen -W "$(ffmpeg -formats 2>/dev/null | sed -n '/--/,$p' | tail -n +2 | awk '{print $2}')" -- "$cur") ) ;;
         -h|-\?|-help|--help)
             COMPREPLY=( $(compgen -W "long full decoder= encoder= demuxer= muxer= filter=" -- "$cur") ) ;;
+        -v|-loglevel)
+            COMPREPLY=( $(compgen -W "quiet panic fatal error warning info verbose debug trace" -- "$cur") ) ;;
         -hwaccel)
             COMPREPLY=( $(compgen -W "none auto $(ffmpeg -hwaccels 2>/dev/null | tail -n +2)" -- "$cur") ) ;;
         -init_hw_device)
